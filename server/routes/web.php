@@ -21,4 +21,7 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     //Criação de usuários
     $router->post('users/store', 'UserController@store');
+
+    //Login
+    $router->post('login', 'AuthController@login');
 });
