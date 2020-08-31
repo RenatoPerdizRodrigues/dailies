@@ -16,3 +16,9 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+//Colocamos uma rota prefixada de API
+$router->group(['prefix' => 'api'], function () use ($router) {
+    //Criação de usuários
+    $router->post('users/store', 'UserController@store');
+});
