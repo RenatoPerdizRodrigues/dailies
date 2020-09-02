@@ -52,4 +52,15 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getJWTCustomClaims(){ 
         return [];
     }
+
+    /**
+     * Scope de busca
+     */
+    public function scopeFields($query, $fields) {
+        return $query->when($fields['name'] != '', function($q) use($fields){
+            return $q->where('name', $fields['name']);
+        })->when($fields['email'] != '', function($q) use($fields){
+            return $q->where('email', $fields['email']);
+        });
+    }
 }

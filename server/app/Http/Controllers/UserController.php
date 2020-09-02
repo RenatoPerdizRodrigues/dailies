@@ -19,8 +19,8 @@ class UserController extends Controller {
      * 
      * @return json
      */
-    public function index(){
-        if($users = User::paginate(5)){
+    public function index(Request $request){
+        if($users = User::fields($request->json()->all())->paginate(5)){
             return response()->json(['users' => $users, 'message' => 'Usuários capturados com sucesso'], 201);
         } else {
             return response()->json(['message' => 'Usuário não encontrado'], 401);
