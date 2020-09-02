@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
-    public function store(Request $request){
+    /**
+     * Construtor com autenticação
+     */
+    public function __construct(){
+        $this->middleware('auth:api');
+    }
 
+    public function store(Request $request){
         /**
          * Validação
          */
@@ -23,5 +30,9 @@ class UserController extends Controller {
         } catch (\Exception $e) {
             return response()->json(['message' => 'Falha:' . $e->getMessage()], 401);
         }
+    }
+
+    public function show(){
+        return response()->json(['user' => Auth::user()], 200);
     }
 }

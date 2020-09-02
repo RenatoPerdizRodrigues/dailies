@@ -26,4 +26,12 @@
             return $this->respondWithToken($token);
         }
 
+        /**
+         * Desloga o usuário e invalida o token
+         */
+        public function logout(){
+            auth()->logout();
+            return response()->json(['message' => 'Logout realizado com sucesso!'], 200);
+        }
+
     }
