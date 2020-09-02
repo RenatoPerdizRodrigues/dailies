@@ -20,8 +20,10 @@ $router->get('/', function () use ($router) {
 //Colocamos uma rota prefixada de API
 $router->group(['prefix' => 'api'], function () use ($router) {
     //Rotas de usuário
-    $router->post('users/store', 'UserController@store');
-    $router->get('users/profile', 'UserController@show');
+    $router->put('users/{id}/update', 'UserController@update');
+    $router->post('users', 'UserController@store');
+    $router->get('users/{id}', 'UserController@show');
+    $router->get('users', 'UserController@index');
 
     //Login
     $router->post('login', 'AuthController@login');
