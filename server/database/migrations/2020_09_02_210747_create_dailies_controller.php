@@ -18,7 +18,6 @@ class CreateDailiesController extends Migration
             $table->integer('user_id')->references('id')->on('users');
             $table->integer('task_id')->references('id')->on('tasks');
             $table->date('date');
-            $table->integer('order');
             $table->boolean('done');
             $table->timestamps();
         });

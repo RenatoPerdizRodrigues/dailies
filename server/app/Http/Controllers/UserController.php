@@ -11,7 +11,7 @@ class UserController extends Controller {
      * Construtor com autenticação
      */
     public function __construct(){
-        $this->middleware('auth:api');
+        $this->middleware('auth:api', ['except' => ['store']]);
     }
 
     /**

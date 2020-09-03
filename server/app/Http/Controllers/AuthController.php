@@ -1,10 +1,10 @@
 <?php
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use Illuminate\Support\Facades\Auth;
-    use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-    class AuthController extends Controller {
+class AuthController extends Controller {
 
         /**
          * Recupera um JWT por credenciais
@@ -33,5 +33,4 @@
             auth()->logout();
             return response()->json(['message' => 'Logout realizado com sucesso!'], 200);
         }
-
-    }
+}
