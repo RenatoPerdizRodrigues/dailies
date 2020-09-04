@@ -27,6 +27,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     //Rotas de task
     $router->post('tasks', 'TaskController@store');
+    $router->put('tasks/{id}/update', 'TaskController@update');
+    $router->get('tasks/{id}', 'TaskController@show');
 
     //Login
     $router->post('login', 'AuthController@login');
