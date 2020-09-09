@@ -42,4 +42,11 @@ class Daily extends Model
         $this->attributes['date'] = dataParaAmericana($value);
     }
 
+    /**
+     * Relacionamentos
+     */
+    public function tasks(){
+        return $this->belongsTo('App\Models\Task', 'task_id', 'id');
+    }
+
 }

@@ -30,6 +30,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('tasks/{id}/update', 'TaskController@update');
     $router->get('tasks/{id}', 'TaskController@show');
 
+    //Dailies
+    $router->get('daily[/{date}]', 'DailyController@show');
+    $router->get('daily', 'DailyController@index');
+
     //Login
     $router->post('login', 'AuthController@login');
     $router->get('logout', 'AuthController@logout');
