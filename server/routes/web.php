@@ -36,6 +36,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('daily/all', 'DailyController@index');
     $router->get('daily[/{date}]', 'DailyController@show');
 
+    //Moodstamps
+    $router->post('moodstamp', 'MoodstampController@store');
+
     //Login
     $router->post('login', 'AuthController@login');
     $router->get('logout', 'AuthController@logout');

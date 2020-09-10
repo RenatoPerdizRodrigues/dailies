@@ -13,7 +13,7 @@ class CreateMoodstampsController extends Migration
      */
     public function up()
     {
-        Schema::create('moodstramps', function (Blueprint $table) {
+        Schema::create('moodstamps', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->references('id')->on('users');
             $table->enum('mood', ['good', 'normal', 'bad']);
@@ -31,6 +31,6 @@ class CreateMoodstampsController extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('moodstramps');
+        Schema::dropIfExists('moodstamps');
     }
 }
