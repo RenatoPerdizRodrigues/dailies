@@ -42,14 +42,28 @@ class DailyController extends Controller {
      * @param daily_id
      * @param task_id
      */
-    public function done(){
-
+    public function done($id){
+        if($daily = Daily::find($id)){
+            $daily->done = !$daily->done;
+            $daily->save();
+            return response()->json(['done' => $daily->done, 'message' => 'Alterado com sucesso!'], 200);
+        } else {
+            return response()->json(['message' => 'Daily não encontrada!'], 400);
+        }
     }
 
     /**
      * Copia a task para outra daily
      */
-    public function copy(){
-        
+    public function copy($id, $date){
+        if($daily = Daily::find($id)){
+            $new_daily = $daily->replicate();
+            $new_daily->date = $date;
+            $new_daily->done = 0;
+            $new_daily->save();
+            return response()->json(['daily' => $new_daily, 'message' => 'Daily copiada com sucesso!'], 200);
+        } else {
+            return response()->json(['message' => 'Daily não encontrada!'], 400);
+        }
     }
 }
